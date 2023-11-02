@@ -4,37 +4,43 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Category;
 
 class UserController extends Controller
 {
 
     /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $data['users'] = User::orderBy('id','desc')->paginate(5);
+        $data['categories'] = Category::orderBy('id','desc')->paginate(5);
+
+        // dump($data);
+        dd($data);
+
         return view('users.index', $data);
     }
 
     /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('users.create');
     }
 
     /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -49,18 +55,18 @@ class UserController extends Controller
         $user->password = $request->password;
         $user->save();
 
-            return redirect()->route('users.index')
-        ->with('success','User has been created successfully.');
+        return redirect()->route('users.index')
+            ->with('success','User has been created successfully.');
     }
 
     /**
      * Show the profile for the given user.
      *
-     * @param  int  $id
+     * @param  User  $user
      * @return Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        return view('user.profile', ['user' => $user]);
+        return view('users.show', ['user' => $user]);
     }
 }
