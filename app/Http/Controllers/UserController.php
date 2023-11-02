@@ -61,10 +61,6 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = $this->users->find($id);
-
-        dd($user);
-
         return view('user.profile', ['user' => $user]);
     }
 }
