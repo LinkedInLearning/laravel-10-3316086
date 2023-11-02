@@ -7,7 +7,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-       
+
     /**
     * Display a listing of the resource.
     *
@@ -52,7 +52,7 @@ class UserController extends Controller
             return redirect()->route('users.index')
         ->with('success','User has been created successfully.');
     }
- 
+
     /**
      * Show the profile for the given user.
      *
@@ -64,7 +64,7 @@ class UserController extends Controller
         $user = $this->users->find($id);
 
         dd($user);
- 
+
         return view('user.profile', ['user' => $user]);
     }
 }
