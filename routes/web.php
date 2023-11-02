@@ -15,6 +15,10 @@ use App\Models\User;
 |
 */
 
+Route::get('/home', function () {
+    return view('home', ['framework' => 'Laravel']);
+});
+
 // Basic
 Route::get('/test', function () {
     return 'test';
@@ -81,6 +85,6 @@ Route::get('/test-user', function () {
 // });
 
 // Binding implicit
-Route::get('/users/{user}', function (User $user) {
-    return $user->email;
-});
+// Route::get('/users/{user}', function (User $user) {
+//     return $user->email;
+// });
