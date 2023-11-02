@@ -20,10 +20,26 @@ Route::get('/test', function () {
     return 'test';
 });
 
-// Default retourner une vue
+// Default : retourner une vue
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Avec des paramètres
+Route::get('/bonjour/{name}', function ($name) {
+    return 'Nom : '.$name;
+});
+
+// Avec des paramètres non obligatoires
+Route::get('/user-mandatory/{name?}', function ($name = 'Julian') {
+    return $name;
+});
+
+// Avec une validation du type
+Route::get('/userbis/{name}', function ($name) {
+    return 'ici';
+})->where('name', '[A-Za-z]+');
+// ->where('id', '[0-9]+');
 
 // Get
 // Route::get('/user', [UserController::class, 'index']);
@@ -47,22 +63,6 @@ Route::redirect('/test1', '/test', 301);
 // Listing des routes
 // php artisan route:list
 // php artisan route:list -v
-
-// Avec des paramètres
-Route::get('/bonjour/{name}', function ($name) {
-    return 'Nom : '.$name;
-});
-
-// Avec des paramètres non obligatoires
-Route::get('/user-mandatory/{name?}', function ($name = 'Julian') {
-    return $name;
-});
-
-// Avec une validation du type
-Route::get('/userbis/{name}', function ($name) {
-    return 'ici';
-})->where('name', '[A-Za-z]+');
-// ->where('id', '[0-9]+');
 
 // créer une route avec un nom
 Route::get('/user/profile', function () {
