@@ -12,7 +12,7 @@
                 <h2>CRUD Example</h2>
                 </div>
                     <div class="pull-right mb-2">
-                        <a class="btn btn-success" href="{{ route('users.create') }}"> Create User</a>
+                        <a class="btn btn-success" href="{{ route('posts.create') }}">Créer un Post</a>
                     </div>
                 </div>
             </div>
@@ -24,21 +24,19 @@
 <table class="table table-bordered">
     <tr>
         <th>No</th>
-        <th>User Name</th>
-        <th>User Email</th>
-        <th>User Password</th>
-        <th width="280px">Action</th>
+        <th>Titre</th>
+        <th>Info</th>
+        <th width="280px">Actions</th>
     </tr>
-    @foreach ($users as $user)
+    @foreach ($posts as $post)
         <tr>
-            <td>{{ $user->id }}</td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->password }}</td>
+            <td>{{ $post->id }}</td>
+            <td>{{ $post->title }}</td>
+            <td>{{ $post->content }}</td>
             <td>
             </td>
         </tr>
     @endforeach
 </table>
-{!! $users->links() !!}
+{!! $posts->links() !!}
 @endsection

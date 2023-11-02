@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 use App\Models\User;
 
 /*
@@ -15,16 +16,36 @@ use App\Models\User;
 |
 */
 
+Route::get('/home', function () {
+    return view('home', ['framework' => 'Laravel']);
+});
+
 // Basic 
 Route::get('/test', function () {
     return 'test';
 });
 
-// Default retourner une vue
+// Default : retourner une vue
 Route::get('/', function () {
     return view('welcome');
 });
  
+// Avec des paramètres
+Route::get('/bonjour/{name}', function ($name) {
+    return 'Nom : '.$name;
+});
+
+// Avec des paramètres non obligatoires
+Route::get('/user-mandatory/{name?}', function ($name = 'Julian') {
+    return $name;
+});
+
+// Avec une validation du type
+Route::get('/userbis/{name}', function ($name) {
+    return 'ici';
+})->where('name', '[A-Za-z]+');
+// ->where('id', '[0-9]+');
+
 // Get 
 // Route::get('/user', [UserController::class, 'index']);
 
@@ -48,22 +69,6 @@ Route::redirect('/test1', '/test', 301);
 // php artisan route:list
 // php artisan route:list -v
 
-// Avec des paramètres
-Route::get('/bonjour/{name}', function ($name) {
-    return 'Nom : '.$name;
-});
-
-// Avec des paramètres non obligatoires
-Route::get('/user-mandatory/{name?}', function ($name = 'Julian') {
-    return $name;
-});
-
-// Avec une validation du type
-Route::get('/userbis/{name}', function ($name) {
-    return 'ici';
-})->where('name', '[A-Za-z]+');
-// ->where('id', '[0-9]+');
-
 // créer une route avec un nom
 Route::get('/user/profile', function () {
     return 'profile';
@@ -81,6 +86,11 @@ Route::get('/test-user', function () {
 // });
 
 // Binding implicit 
-Route::get('/users/{user}', function (User $user) {
-    return $user->email;
-});
+// Route::get('/users/{user}', function (User $user) {
+//     return $user->email;
+// });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('posts', PostController::class);

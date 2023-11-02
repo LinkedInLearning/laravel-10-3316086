@@ -20,8 +20,8 @@ La branche master correspond au code à la fin de la formation.
 ## Installation
 
 1. Pour utiliser ces fichiers d’exercice, vous avez besoin de :
-   - composer
-   - Un outil comme WAMP, XAMP ou MAMP
+    - composer
+    - Un outil comme WAMP, XAMP ou MAMP
 2. Cloner ce dossier Repository sur votre machine locale (Mac), CMD (Windows), ou sur un outil GUI tel que SourceTree.
 3. Modifier le fichier .env par vos valeurs et utiliser la commande `composer install` afin d'initaliser le projet.
 

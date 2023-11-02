@@ -9,10 +9,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left mb-2">
-                <h2>Add User</h2>
+                <h2>Créer un Post</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('posts.index') }}"> Retour</a>
             </div>
         </div>
     </div>
@@ -21,36 +21,28 @@
             {{ session('status') }}
         </div>
     @endif
-    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>User Name:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="User Name">
-                    @error('name')
+                    <strong>Titre:</strong>
+                    <input type="text" name="title" class="form-control" placeholder="titre">
+                    @error('title')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>User Email:</strong>
-                    <input type="email" name="email" class="form-control" placeholder="User Email">
-                    @error('email')
+                    <strong>Info:</strong>
+                    <textarea name="content" class="form-control" placeholder="...."></textarea>
+                    @error('content')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>User password:</strong>
-                    <input type="password" name="password" class="form-control" placeholder="User password">
-                    @error('password')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
+        
             <button type="submit" class="btn btn-primary ml-3">Submit</button>
         </div>
     </form>
