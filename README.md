@@ -1,6 +1,6 @@
-#  L'essentiel de Laravel 10
+#  L'essentiel de Laravel
 
-Ce dossier Repository est lié au cours `L'essentiel de Laravel 10`. Le cours entier est disponible sur [LinkedIn Learning][lil-course-url].
+Ce dossier Repository est lié au cours `L'essentiel de Laravel`. Le cours entier est disponible sur [LinkedIn Learning][lil-course-url].
 
 ![Laravel v9][lil-thumbnail-url]
 
